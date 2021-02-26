@@ -1,0 +1,11 @@
+with HyperFlex retiming
+Perfomance-High performance effort
+Register Optimization-Allow register Retiming
+Advanced Settings(Synthesis)-Optimization Technique:speed
+                             Synchronization Register Chain Length:1
+Advanced Setting(Fitter)- Allow DSP Retiming: Yes
+                          Allow RAM Retiming: Yes
+                          Auto Delay chains for High Fanout Input Pins: Yes
+
+ALUTs:2227
+Fmax:388MHz

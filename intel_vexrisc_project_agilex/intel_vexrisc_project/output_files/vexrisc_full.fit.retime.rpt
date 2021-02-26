@@ -1,0 +1,327 @@
+Fitter Retime Stage Report for vexrisc_full
+Fri Feb 26 12:45:47 2021
+Quartus Prime Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Hyper-Retimer Settings
+  3. Reset Sequence Requirement
+  4. Retiming Limit Summary
+  5. Critical Chain Summary for Clock Domain clk
+  6. Retime Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++--------------------------------------------------+
+; Hyper-Retimer Settings                           ;
++------------------------+---------+---------------+
+; Option                 ; Setting ; Default Value ;
++------------------------+---------+---------------+
+; Enable Auto-Pipelining ; On      ; On            ;
++------------------------+---------+---------------+
+
+
++------------------------------------------+
+; Reset Sequence Requirement               ;
++------------+-----------------------------+
+; Clock Name ; Number of additional cycles ;
++------------+-----------------------------+
+; clk        ; 2                           ;
++------------+-----------------------------+
+Note: Due to retiming optimizations, a clock domain may require a longer reset sequence to ensure correct functionality.  The table above indicates the minimum number of additional reset sequence cycles needed for each clock domain.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Retiming Limit Summary                                                                                                                                                        ;
++------------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Transfer   ; Limiting Reason        ; Recommendation                                                                                                                    ;
++------------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+; Clock Domain clk ; Insufficient Registers ; See the Fast Forward Timing Closure Recommendations report for step-by-step suggestions for RTL changes and estimated performance ;
++------------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+
+Critical Chain Summary for Clock Domain clk
+===============================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendations for Critical Chain                                                                                                                                                                 ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recommendation                                                                                                                                                                                     ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; The critical chain is limited by: Insufficient Registers                                                                                                                                           ;
+;                                                                                                                                                                                                    ;
+; 1) Reduce the delay of 'Long Paths' in the chain                                                                                                                                                   ;
+;   or insert more pipeline stages for 'Long Paths' in the chain                                                                                                                                     ;
+;   or remove retiming restrictions                                                                                                                                                                  ;
+;    Please see <a href='https://www.intel.com/content/www/us/en/programmable/documentation/jbr1444752564689.html#mtr1430270744844'>Insufficient Registers - Section 5.2.1</a> for more information. ;
+;                                                                                                                                                                                                    ;
+; Retiming Restriction: Not fully registered DSP                                                                                                                                                     ;
+;   mult_0~mac                                                                                                                                                                                       ;
+;     Insert more pipeline stages at the inputs and outputs of the DSP block(s) to allow better register packing.                                                                                    ;
+;     Review Fitter Report: Fixed Point DSP Register Packing Details                                                                                                                                 ;
+;    Please see <a href='https://www.intel.com/content/www/us/en/programmable/documentation/jbr1444752564689.html#esc1445881961208'>Hyper-Pipelining - Section 2.3</a> for more information.         ;
+;                                                                                                                                                                                                    ;
+; Retiming Restriction: Not fully registered RAM                                                                                                                                                     ;
+;  RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a31                                                                                                                     ;
+;   Insert more pipeline stages after the RAM block to allow better register packing..                                                                                                               ;
+;   Review Fitter Report: RAM Summary                                                                                                                                                                ;
+; Retiming Restriction: Not fully registered RAM                                                                                                                                                     ;
+; Retiming Restriction: Not fully registered RAM                                                                                                                                                     ;
+;  RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18                                                                                                                     ;
+;   Insert more pipeline stages after the RAM block to allow better register packing..                                                                                                               ;
+;   Review Fitter Report: RAM Summary                                                                                                                                                                ;
+; Retiming Restriction: Not fully registered RAM                                                                                                                                                     ;
+;    Please see <a href='https://www.intel.com/content/www/us/en/programmable/documentation/jbr1444752564689.html#esc1445881961208'>Hyper-Pipelining - Section 2.3</a> for more information.         ;
+;                                                                                                                                                                                                    ;
+; Retiming Restrictions at Register #1:                                                                                                                                                              ;
+;  decode_to_execute_RS2[21]                                                                                                                                                                         ;
+; due to the following restrictions:                                                                                                                                                                 ;
+;  execute_RS2[21]: Node is a primitive                                                                                                                                                              ;
+;                                                                                                                                                                                                    ;
+; Retiming Restrictions at Register #9:                                                                                                                                                              ;
+;  MmuPlugin_status_sum                                                                                                                                                                              ;
+;   Node uses an asynchronous clear port                                                                                                                                                             ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Critical Chain Details                                                                                                                                                                       ;
++--------------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------+
+; Path Info                ; Register                ; Register ID ; Element                                                                                                                   ;
++--------------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------+
+; Retiming Restriction     ; Hyper-Register          ; #1          ; decode_to_execute_RS2[21]~BLOCK_INPUT_MUX_PASSTHROUGH_X171_Y99_N0_I43_dff                                                 ;
+; Long Path (Critical)     ;                         ;             ; decode_to_execute_RS2[21]~BLOCK_INPUT_MUX_PASSTHROUGH_X171_Y99_N0_I43_dff.q                                               ;
+; Long Path (Critical)     ;                         ;             ; decode_to_execute_RS2[21]~BLOCK_INPUT_MUX_PASSTHROUGH_X171_Y99_N0_I43                                                     ;
+; Long Path (Critical)     ;                         ;             ; decode_to_execute_RS2[21]~LAB_RE_X171_Y99_N0_I47                                                                          ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]|dataf                                                                                                     ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]|combout                                                                                                   ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~cw_ml_mlab/lab_lut6outb[0]                                                                                ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~LAB_RE_X171_Y99_N0_I144                                                                                   ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~R1_X171_Y99_N0_I20                                                                                        ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~C1_X170_Y98_N0_I21                                                                                        ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~C1_X170_Y97_N0_I21                                                                                        ;
+; Long Path (Critical)     ; Bypassed Hyper-Register ;             ; execute_RS2[21]~R4_X167_Y97_N0_I15                                                                                        ;
+; Long Path (Critical)     ; Bypassed Hyper-Register ;             ; execute_RS2[21]~R4_X163_Y97_N0_I15                                                                                        ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~R0_X162_Y97_N0_I41                                                                                        ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~R0_X162_Y97_N0_I23                                                                                        ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~LOCAL_INTERCONNECT_X162_Y97_N0_I86                                                                        ;
+; Long Path (Critical)     ; Bypassed Hyper-Register ;             ; execute_RS2[21]~BLOCK_INPUT_MUX_PASSTHROUGH_X162_Y97_N0_I11                                                               ;
+; Long Path (Critical)     ;                         ;             ; execute_RS2[21]~MP_MAC_RE_X162_Y97_N0_I83                                                                                 ;
+; Long Path (Critical)     ;                         ;             ; mult_0~mac|ay[5]                                                                                                          ;
+; Long Path (Critical)     ; REG (DSP)               ; #2          ; mult_0~mac~OUTPUT_REG                                                                                                     ;
+; Long Path                ; REG (DSP)               ; #3          ; execute_to_memory_MUL_LH[10]                                                                                              ;
+; Long Path                ;                         ;             ; mult_0~mac|resulta[10]                                                                                                    ;
+; Long Path                ;                         ;             ; mult_0~mac~_MP_MAC_RE_X162_Y97_N0_I251                                                                                    ;
+; Long Path                ;                         ;             ; mult_0~mac~_C1_X162_Y96_N0_I11                                                                                            ;
+; Long Path                ;                         ;             ; mult_0~mac~_C1_X162_Y95_N0_I11                                                                                            ;
+; Long Path                ;                         ;             ; mult_0~mac~_C1_X162_Y94_N0_I11                                                                                            ;
+; Long Path                ;                         ;             ; mult_0~mac~_R2_X163_Y94_N0_I5                                                                                             ;
+; Long Path                ;                         ;             ; mult_0~mac~_LOCAL_INTERCONNECT_X164_Y94_N0_I21                                                                            ;
+; Long Path                ; Bypassed Hyper-Register ;             ; mult_0~mac~_BLOCK_INPUT_MUX_PASSTHROUGH_X164_Y94_N0_I47                                                                   ;
+; Long Path                ;                         ;             ; mult_0~mac~_LAB_RE_X164_Y94_N0_I41                                                                                        ;
+; Long Path                ;                         ;             ; add_0~51|datad                                                                                                            ;
+; Long Path                ;                         ;             ; add_0~56|cout                                                                                                             ;
+; Long Path                ;                         ;             ; add_0~61|cin                                                                                                              ;
+; Long Path                ;                         ;             ; add_0~66|cout                                                                                                             ;
+; Long Path                ;                         ;             ; add_0~71|cin                                                                                                              ;
+; Long Path                ;                         ;             ; add_0~76|sumout                                                                                                           ;
+; Long Path                ;                         ;             ; add_0~76~_LAB_RE_X164_Y94_N0_I120                                                                                         ;
+; Long Path                ;                         ;             ; add_0~76~_R1_X164_Y94_N0_I28                                                                                              ;
+; Long Path                ;                         ;             ; add_0~76~_R0_X163_Y94_N0_I48                                                                                              ;
+; Long Path                ;                         ;             ; add_0~76~_R0_X163_Y94_N0_I29                                                                                              ;
+; Long Path                ;                         ;             ; add_0~76~_LOCAL_INTERCONNECT_X163_Y94_N0_I68                                                                              ;
+; Long Path                ; Bypassed Hyper-Register ;             ; add_0~76~_BLOCK_INPUT_MUX_PASSTHROUGH_X163_Y94_N0_I62                                                                     ;
+; Long Path                ;                         ;             ; add_0~76~_LAB_RE_X163_Y94_N0_I62                                                                                          ;
+; Long Path                ;                         ;             ; add_9~76|datad                                                                                                            ;
+; Long Path                ; Bypassed Hyper-Register ;             ; add_9~96|cout                                                                                                             ;
+; Long Path                ;                         ;             ; add_9~96~_LAB_RE_X163_Y94_N0_I88                                                                                          ;
+; Long Path                ;                         ;             ; add_9~96~_LAB_RE_X163_Y93_N0_I87                                                                                          ;
+; Long Path                ;                         ;             ; add_9~101|cin                                                                                                             ;
+; Long Path                ;                         ;             ; add_9~106|cout                                                                                                            ;
+; Long Path                ;                         ;             ; add_9~111|cin                                                                                                             ;
+; Long Path                ;                         ;             ; add_9~116|cout                                                                                                            ;
+; Long Path                ;                         ;             ; add_9~121|cin                                                                                                             ;
+; Long Path                ;                         ;             ; add_9~126|cout                                                                                                            ;
+; Long Path                ;                         ;             ; add_9~131|cin                                                                                                             ;
+; Long Path                ;                         ;             ; add_9~136|sumout                                                                                                          ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]|d                                                                                         ;
+; Long Path                ; ALM Register            ; #4          ; memory_to_writeBack_MUL_LOW[43]                                                                                           ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]|q                                                                                         ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~LAB_RE_X163_Y93_N0_I103                                                                   ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~R0_X163_Y93_N0_I26                                                                        ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~C1_X163_Y92_N0_I35                                                                        ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~R0_X163_Y92_N0_I64                                                                        ;
+; Long Path                ; Bypassed Hyper-Register ;             ; memory_to_writeBack_MUL_LOW[43]~C4_X163_Y92_N0_I16                                                                        ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~R0_X163_Y96_N0_I28                                                                        ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~LOCAL_INTERCONNECT_X163_Y96_N0_I43                                                        ;
+; Long Path                ; Bypassed Hyper-Register ;             ; memory_to_writeBack_MUL_LOW[43]~BLOCK_INPUT_MUX_PASSTHROUGH_X163_Y96_N0_I41                                               ;
+; Long Path                ;                         ;             ; memory_to_writeBack_MUL_LOW[43]~LAB_RE_X163_Y96_N0_I45                                                                    ;
+; Long Path                ;                         ;             ; add_14~56|datac                                                                                                           ;
+; Long Path                ; Bypassed Hyper-Register ;             ; add_14~96|cout                                                                                                            ;
+; Long Path                ;                         ;             ; add_14~96~_LAB_RE_X163_Y96_N0_I88                                                                                         ;
+; Long Path                ;                         ;             ; add_14~96~_LAB_RE_X163_Y95_N0_I87                                                                                         ;
+; Long Path                ;                         ;             ; add_14~101|cin                                                                                                            ;
+; Long Path                ;                         ;             ; add_14~146|cout                                                                                                           ;
+; Long Path                ;                         ;             ; add_14~151|cin                                                                                                            ;
+; Long Path                ;                         ;             ; add_14~156|sumout                                                                                                         ;
+; Long Path                ;                         ;             ; add_14~156~cw_la_lab/laboutb[3]                                                                                           ;
+; Long Path                ;                         ;             ; add_14~156~_LAB_RE_X163_Y95_N0_I112                                                                                       ;
+; Long Path                ;                         ;             ; add_14~156~_R1_X163_Y95_N0_I20                                                                                            ;
+; Long Path                ;                         ;             ; add_14~156~_C1_X162_Y95_N0_I20                                                                                            ;
+; Long Path                ;                         ;             ; add_14~156~_C1_X162_Y96_N0_I20                                                                                            ;
+; Long Path                ; Bypassed Hyper-Register ;             ; add_14~156~_R6_X163_Y97_N0_I10                                                                                            ;
+; Long Path                ;                         ;             ; add_14~156~_R0_X168_Y97_N0_I37                                                                                            ;
+; Long Path                ;                         ;             ; add_14~156~_LOCAL_INTERCONNECT_X168_Y97_N0_I31                                                                            ;
+; Long Path                ; Bypassed Hyper-Register ;             ; add_14~156~_BLOCK_INPUT_MUX_PASSTHROUGH_X168_Y97_N0_I27                                                                   ;
+; Long Path                ;                         ;             ; add_14~156~_LAB_RE_X168_Y97_N0_I31                                                                                        ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27|datae                                                                                                    ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27|combout                                                                                                  ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27~cw_la_lab/laboutt[15]                                                                                    ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27~_LAB_RE_X168_Y97_N0_I104                                                                                 ;
+; Long Path                ; Bypassed Hyper-Register ;             ; decode_RS1[0]~27~_C4_X168_Y97_N0_I12                                                                                      ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27~_R0_X168_Y101_N0_I23                                                                                     ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27~_LOCAL_INTERCONNECT_X168_Y101_N0_I12                                                                     ;
+; Long Path                ; Bypassed Hyper-Register ;             ; decode_RS1[0]~27~_BLOCK_INPUT_MUX_PASSTHROUGH_X168_Y101_N0_I6                                                             ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27~_LAB_RE_X168_Y101_N0_I6                                                                                  ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn|datad                                                                                                ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn|combout                                                                                              ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~cw_la_lab/lab_lut5outt[0]                                                                            ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_LAB_RE_X168_Y101_N0_I129                                                                            ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_R1_X168_Y101_N0_I2                                                                                  ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_C1_X167_Y100_N0_I3                                                                                  ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_C1_X167_Y99_N0_I3                                                                                   ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_LOCAL_INTERCONNECT_X167_Y99_N0_I65                                                                  ;
+; Long Path                ; Bypassed Hyper-Register ;             ; decode_RS1[0]~27xsyn~_BLOCK_INPUT_MUX_PASSTHROUGH_X167_Y99_N0_I9                                                          ;
+; Long Path                ;                         ;             ; decode_RS1[0]~27xsyn~_MEDIUM_EAB_RE_X167_Y99_N0_I9                                                                        ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a31|portadatain[0]                              ;
+; Long Path                ; REG (RAM)               ; #5          ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a31~reg0                                        ;
+; ------------------------ ; ----------------------- ; ----------- ; ------------------------------------------------------------------------------------------------------------------------- ;
+; Extend to locatable node ; ALM Register            ; #6          ; IBusCachedPlugin_cache|_zz_10_[19]                                                                                        ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]|q                                                                                      ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LAB_RE_X159_Y103_N0_I89                                                                ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~R0_X159_Y103_N0_I1                                                                     ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~R0_X159_Y103_N0_I35                                                                    ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LOCAL_INTERCONNECT_X159_Y103_N0_I62                                                    ;
+; Extend to locatable node ; Bypassed Hyper-Register ;             ; IBusCachedPlugin_cache|_zz_10_[19]~BLOCK_INPUT_MUX_PASSTHROUGH_X159_Y103_N0_I60                                           ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LAB_RE_X159_Y103_N0_I59                                                                ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4|dataa                                                                       ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4|combout                                                                     ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_LAB_RE_X159_Y103_N0_I117                                                   ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_R4_X160_Y103_N0_I7                                                         ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_R4_X164_Y103_N0_I7                                                         ;
+; Extend to locatable node ; Bypassed Hyper-Register ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_C4_X167_Y99_N0_I29                                                         ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_LOCAL_INTERCONNECT_X167_Y99_N0_I42                                         ;
+; Retiming Dependency      ; Bypassed Hyper-Register ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_BLOCK_INPUT_MUX_PASSTHROUGH_X167_Y99_N0_I48                                ;
+; Retiming Dependency      ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_MEDIUM_EAB_RE_X167_Y99_N0_I48                                              ;
+; Retiming Dependency      ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a31|portbaddr[4]                                ;
+; Retiming Dependency      ; REG (RAM)               ; #5          ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a31~reg0                                        ;
+; ------------------------ ; ----------------------- ; ----------- ; ------------------------------------------------------------------------------------------------------------------------- ;
+; Extend to locatable node ; ALM Register            ; #6          ; IBusCachedPlugin_cache|_zz_10_[19]                                                                                        ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]|q                                                                                      ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LAB_RE_X159_Y103_N0_I89                                                                ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~R0_X159_Y103_N0_I1                                                                     ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~R0_X159_Y103_N0_I35                                                                    ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LOCAL_INTERCONNECT_X159_Y103_N0_I62                                                    ;
+; Extend to locatable node ; Bypassed Hyper-Register ;             ; IBusCachedPlugin_cache|_zz_10_[19]~BLOCK_INPUT_MUX_PASSTHROUGH_X159_Y103_N0_I60                                           ;
+; Extend to locatable node ;                         ;             ; IBusCachedPlugin_cache|_zz_10_[19]~LAB_RE_X159_Y103_N0_I59                                                                ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4|dataa                                                                       ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4|combout                                                                     ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_LAB_RE_X159_Y103_N0_I117                                                   ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_R4_X160_Y103_N0_I7                                                         ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_R4_X164_Y103_N0_I7                                                         ;
+; Extend to locatable node ; Bypassed Hyper-Register ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_C4_X167_Y99_N0_I29                                                         ;
+; Extend to locatable node ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_LOCAL_INTERCONNECT_X167_Y99_N0_I42                                         ;
+; Long Path                ; Bypassed Hyper-Register ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_BLOCK_INPUT_MUX_PASSTHROUGH_X167_Y99_N0_I48                                ;
+; Long Path                ;                         ;             ; decode_RegFilePlugin_regFileReadAddress1[4]~4~_MEDIUM_EAB_RE_X167_Y99_N0_I48                                              ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18|portbaddr[4]                                ;
+; Long Path                ; REG (RAM)               ; #7          ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~reg0                                        ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18|portbdataout[0]                             ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~MEDIUM_EAB_RE_X167_Y99_N0_I101              ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~R0_X167_Y99_N0_I32                          ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~R0_X167_Y99_N0_I49                          ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~C1_X167_Y98_N0_I37                          ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~R0_X167_Y98_N0_I62                          ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~R2_X168_Y98_N0_I13                          ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~LOCAL_INTERCONNECT_X169_Y98_N0_I45          ;
+; Long Path                ; Bypassed Hyper-Register ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~BLOCK_INPUT_MUX_PASSTHROUGH_X169_Y98_N0_I56 ;
+; Long Path                ;                         ;             ; RegFilePlugin_regFile_rtl_0|auto_generated|altera_syncram_impl1|ram_block2a18~LAB_RE_X169_Y98_N0_I58                      ;
+; Long Path                ;                         ;             ; decode_RS1[0]~142|datac                                                                                                   ;
+; Long Path                ;                         ;             ; decode_RS1[0]~142|combout                                                                                                 ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]|d                                                                                               ;
+; Long Path                ; Bypassed ALM Register   ;             ; decode_to_execute_RS1[18]~.comb                                                                                           ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]|q                                                                                               ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~LAB_RE_X169_Y98_N0_I118                                                                         ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~LOCAL_INTERCONNECT_X169_Y98_N0_I61                                                              ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~BLOCK_INPUT_MUX_PASSTHROUGH_X169_Y98_N0_I67_dff.d                                               ;
+; Long Path                ; Hyper-Register          ; #8          ; decode_to_execute_RS1[18]~BLOCK_INPUT_MUX_PASSTHROUGH_X169_Y98_N0_I67_dff                                                 ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~BLOCK_INPUT_MUX_PASSTHROUGH_X169_Y98_N0_I67_dff.q                                               ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~BLOCK_INPUT_MUX_PASSTHROUGH_X169_Y98_N0_I67                                                     ;
+; Long Path                ;                         ;             ; decode_to_execute_RS1[18]~LAB_RE_X169_Y98_N0_I71                                                                          ;
+; Long Path                ;                         ;             ; execute_RS1[18]|datae                                                                                                     ;
+; Long Path                ;                         ;             ; execute_RS1[18]|combout                                                                                                   ;
+; Long Path                ;                         ;             ; execute_RS1[18]~cw_ml_mlab/laboutb[14]                                                                                    ;
+; Long Path                ;                         ;             ; execute_RS1[18]~LAB_RE_X169_Y98_N0_I123                                                                                   ;
+; Long Path                ;                         ;             ; execute_RS1[18]~R0_X169_Y98_N0_I61                                                                                        ;
+; Long Path                ;                         ;             ; execute_RS1[18]~R2_X168_Y98_N0_I8                                                                                         ;
+; Long Path                ; Bypassed Hyper-Register ;             ; execute_RS1[18]~C4_X167_Y98_N0_I16                                                                                        ;
+; Long Path                ;                         ;             ; execute_RS1[18]~R2_X166_Y102_N0_I8                                                                                        ;
+; Long Path                ;                         ;             ; execute_RS1[18]~LOCAL_INTERCONNECT_X165_Y102_N0_I38                                                                       ;
+; Long Path                ; Bypassed Hyper-Register ;             ; execute_RS1[18]~BLOCK_INPUT_MUX_PASSTHROUGH_X165_Y102_N0_I6                                                               ;
+; Long Path                ;                         ;             ; execute_RS1[18]~LAB_RE_X165_Y102_N0_I6                                                                                    ;
+; Long Path                ;                         ;             ; Mux_1852~2|datad                                                                                                          ;
+; Long Path                ;                         ;             ; Mux_1852~2|combout                                                                                                        ;
+; Long Path                ;                         ;             ; Mux_1852~2~cw_la_lab/laboutt[3]                                                                                           ;
+; Long Path                ;                         ;             ; Mux_1852~2~_LAB_RE_X165_Y102_N0_I92                                                                                       ;
+; Long Path                ; Bypassed Hyper-Register ;             ; Mux_1852~2~_R6_X160_Y102_N0_I1                                                                                            ;
+; Long Path                ;                         ;             ; Mux_1852~2~_C1_X159_Y101_N0_I3                                                                                            ;
+; Long Path                ;                         ;             ; Mux_1852~2~_R4_X156_Y101_N0_I0                                                                                            ;
+; Long Path                ;                         ;             ; Mux_1852~2~_LOCAL_INTERCONNECT_X155_Y101_N0_I12                                                                           ;
+; Long Path                ; Bypassed Hyper-Register ;             ; Mux_1852~2~_BLOCK_INPUT_MUX_PASSTHROUGH_X155_Y101_N0_I72                                                                  ;
+; Long Path                ;                         ;             ; Mux_1852~2~_LAB_RE_X155_Y101_N0_I74                                                                                       ;
+; Long Path                ;                         ;             ; execute_CsrPlugin_writeData[18]~10|datac                                                                                  ;
+; Long Path                ;                         ;             ; execute_CsrPlugin_writeData[18]~10|combout                                                                                ;
+; Long Path                ;                         ;             ; MmuPlugin_status_sum|d                                                                                                    ;
+; Retiming Restriction     ; ALM Register            ; #9          ; MmuPlugin_status_sum                                                                                                      ;
++--------------------------+-------------------------+-------------+---------------------------------------------------------------------------------------------------------------------------+
+
+
+
++-----------------+
+; Retime Messages ;
++-----------------+
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info: *******************************************************************
+Info: Running Quartus Prime Fitter
+    Info: Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
+    Info: Processing started: Fri Feb 26 12:39:07 2021
+    Info: System process ID: 17994
+Info: Command: quartus_fit --read_settings_files=on --write_settings_files=off vexrisc_full -c vexrisc_full --plan --place --route --retime --finalize
+Info: qfit2_default_script.tcl version: #1
+Info: Project  = vexrisc_full
+Info: Revision = vexrisc_full
+Info (17966): Starting Hyper-Retimer operations.
+Info (17968): Completed Hyper-Retimer operations.
+Info (18821): Fitter Hyper-Retimer operations ending: elapsed time is 00:00:07
+
+

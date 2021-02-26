@@ -1,0 +1,48 @@
+Clock Fmax Summary report for vexrisc_full
+Fri Jan 22 16:54:20 2021
+Quartus Prime Version 20.3.0 Build 158 09/24/2020 SC Pro Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Clock Fmax Summary
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Fmax Summary                                                                                                                        ;
++------------+---------+------------------------------+--------------------------------+----------------------------------+-----------------+
+; Clock Name ; Fmax    ; Achieved with Hyper-Retiming ; Achieved with Hyper-Pipelining ; Achieved with Hyper-Optimization ; Restricted Fmax ;
++------------+---------+------------------------------+--------------------------------+----------------------------------+-----------------+
+; clk        ; 435 MHz ; 435 MHz                      ; 435 MHz                        ; 435 MHz                          ; 435 MHz         ;
++------------+---------+------------------------------+--------------------------------+----------------------------------+-----------------+
+Fast Forward Compilation enabled: Post-place & route results are analyzed to provide step-by-step recommendations for suggested RTL changes and show the estimated performance improvement from making these changes
+- Fmax/Slack: Estimated performance from retiming existing registers in the design
+- Relationship: Timing relationship between launch and latch clock edge
+- Achieved with Hyper-Retiming: Estimated performance from analyzing optimizations to remove restrictions that prevent registers from retiming
+- Achieved with Hyper-Pipelining: Estimated performance from analyzing optimizations to add new registers to the design to pipeline paths better
+- Achieved with Hyper-Optimization: Estimated performance from analyzing optimizations to further improve the design
+
+

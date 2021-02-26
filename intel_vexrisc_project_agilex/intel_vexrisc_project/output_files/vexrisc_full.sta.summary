@@ -1,0 +1,20 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clk'
+Slack : 0.226
+TNS   : 0.000
+Corner: Slow vid1 100C Model
+
+Type  : Hold 'clk'
+Slack : 0.037
+TNS   : 0.000
+Corner: Fast vid1 -40C Model
+
+Type  : Minimum Pulse Width 'clk'
+Slack : 0.351
+TNS   : 0.000
+Corner: Slow vid1 -40C Model
+
+------------------------------------------------------------

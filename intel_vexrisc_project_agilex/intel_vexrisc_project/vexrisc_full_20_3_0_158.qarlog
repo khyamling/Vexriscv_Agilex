@@ -1,0 +1,28 @@
+Quartus Prime Archive log --	/intel_vexrisc_project_agilex/intel_vexrisc_project/vexrisc_full_20_3_0_158.qarlog
+
+Archive:	/intel_vexrisc_project_agilex/intel_vexrisc_project/vexrisc_full_20_3_0_158.qar
+Date:		Tue Jan 19 10:55:28 2021
+Quartus Prime		20.3.0 Build 158 09/24/2020 SC Pro Edition
+
+	=========== Files Selected: ===========
+/intel_vexrisc_project_agilex/intel_vexrisc_project/VexRiscv.v
+/intel_vexrisc_project_agilex/intel_vexrisc_project/da_drc.ini
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_10n1.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_7tm1.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_9qj1.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_impl_2pd4.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_impl_8md4.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_impl_aja4.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_impl_kjd4.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_impl_sld4.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_jqm1.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/tmp-clearbox/vexrisc_full/20215/altera_syncram_rsm1.tdf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/vexrisc_full.out.sdc
+/intel_vexrisc_project_agilex/intel_vexrisc_project/vexrisc_full.qpf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/vexrisc_full.qsf
+/intel_vexrisc_project_agilex/intel_vexrisc_project/vexriscv.sdc
+/tools/intelFPGA_pro/20.3/quartus/linux64/assignment_defaults.qdf
+	======= Total: 17 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
