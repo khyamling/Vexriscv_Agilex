@@ -4,7 +4,7 @@ Here, we optimize the VexRISC-V processor on Intel Agilex FPGA board using Hyper
 The VexRisc-V has the following features.
 <ul>
   <li> Support the 32-bit RISC-V ISA(RV32IM). </li>
-  <li> 5-stage "classic" RISC pipeline</li>
+  <li> 5-stage pipeline</li>
   <li>Optimized for Intel FPGA.</li>
     <li>The Instruction cache, Data cache.</li>
     <li>Support single cycle barrel shifter.</li>
